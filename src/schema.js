@@ -1,5 +1,6 @@
 var schema = {
 	namespace: 'app',
+	name: 'Employee',
 	columns: [
 		{ name: 'EmpNo', type: 'String', sortable: true, searchable: true, showInGrid: true }, 
 		{ name: 'FirstName', type: 'String', sortable: false, searchable: true, showInGrid: true },
@@ -11,8 +12,8 @@ var schema = {
 		{ name: 'Job', type: 'String', sortable: false, searchable: false, showInGrid: true },
 		{ name: 'Sex', type: 'String', sortable: false, searchable: false, showInGrid: true },
 		{ name: 'BirthDate', type: 'Date', sortable: false, searchable: false, showInGrid: true },
-		{ name: 'Salary', type: 'Number', sortable: false, searchable: false, showInGrid: true },
-		{ name: 'Bonus', type: 'Number', sortable: false, searchable: false, showInGrid: true }
+		{ name: 'Salary', type: 'Number', sortable: false, searchable: false, showInGrid: false },
+		{ name: 'Bonus', type: 'Number', sortable: false, searchable: false, showInGrid: false }
 	]
 }
 module.exports = schema;

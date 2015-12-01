@@ -1,6 +1,6 @@
 var fs = require('fs');
 var schema = require('./schema.js');
-var name = process.argv[2];
+var name = schema.name;
 
 function getMongooseSchema(columns) {
 	var mongooseSchema = {};
@@ -99,7 +99,7 @@ function getFormControls(columns){
 	columns.forEach(function (element, index, array) {
 				var type = getInputType(element.type); 
 				formControls += '<div class="row">\r\t\t\t<div class="col-4 right">'+element.name+'</div>\r\t\t\t' 
-									+ '<div class="col-4 left"><input type="'+type+'" id="'+element.name+'" value="${'+element.name+'}" /></div>\r\t\t</div>';
+									+ '<div class="col-4 left"><input type="'+type+'" name="'+element.name+'" value="${'+element.name+'}" /></div>\r\t\t</div>';
 				if (index + 1 < array.length) {
 					formControls += '\r\t\t';
 				}
