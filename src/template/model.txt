@@ -1,0 +1,15 @@
+// Dependencies
+var restful = require('node-restful');
+var mongoose = restful.mongoose;
+var Schema = mongoose.Schema;
+
+//{{name}} Schema
+var {{name}}Schema = new Schema({{schema}})
+
+var {{name}}Model = mongoose.model('{{camelized-name}}', {{name}}Schema);
+
+//Return model
+module.exports = {
+		{{camelized-name}}RESTModel : restful.model('{{camelized-name}}', {{name}}Schema),
+		{{camelized-name}}: {{name}}Model
+};

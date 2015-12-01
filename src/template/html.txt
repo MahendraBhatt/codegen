@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>{{camelized-name}}s</title>
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+</head>
+
+<body>
+	<h2>{{camelized-name}}s</h2><span id="noOf{{camelized-name}}s"></span> records found 
+	<div class="search-panel">
+		<div class="row row-separator">
+			<div class="col-12">Find {{camelized-name}}s</div>
+		</div>
+		<div class="row">			
+			{{search-controls}}
+			<div class="col-2">
+				<button onclick="{{namespace}}.{{name}}.count();">Find</button>
+				<button id="add{{camelized-name}}" onclick="{{namespace}}.{{name}}.showInput();">Add New {{camelized-name}}</button>
+			</div>
+		</div>
+	</div>
+	<section>
+		<div id="{{camelized-name}}Header" class="row header">
+			<div class="col-1"></div>
+			{{grid-header-columns}}
+		</div>
+		<div id="{{camelized-name}}Container" class="grid"></div>
+		<div id="{{camelized-name}}Footer" class="footer"></div>
+		<form id="{{camelized-name}}Input" style="width:500px;"></form>
+	</section>
+
+	<script id="{{camelized-name}}Template" type="text/x-jQuery-tmpl">
+		<div class="row header">Add {{camelized-name}}<div class="close">X</div></div>
+		{{form-input-controls}}
+		<div class="row">
+			<div class="col-4 right"></div>
+			<div class="col-4 left"><button onclick="return {{namespace}}.{{name}}.save('${_id}');">Save</button></div>
+		</div>
+	</script>
+	
+	<script id="{{camelized-name}}GridTemplate" type="text/x-jQuery-tmpl">
+		<div class="row">
+			<div class="col-1">
+				<div class="edit" onclick="{{namespace}}.{{name}}.showInput(this);"></div>
+				<div class="delete" onclick="{{namespace}}.{{name}}.remove('${_id}');"></div>
+			</div>
+			{{grid-display-columns}}
+		</div>
+	</script>
+
+	<script src="../js/jquery/dist/jquery.min.js"></script>
+	<script src="../js/jquery.tmpl.min.js"></script>
+	<script src="../js/core.min.js"></script>
+	<script src="../js/xhrlib.min.js"></script>
+	<script src="../js/gridPager.min.js"></script>
+	<script src="../js/page/{{name}}.min.js"></script>
+</body>
+
+</html>

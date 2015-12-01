@@ -1,0 +1,63 @@
+//Dependencies
+var express = require('express');
+var router = express.Router();
+
+//Models
+var {{camelized-name}} = require('../models/{{name}}');
+
+//---------------------------------------------------
+//  {{camelized-name}}s api
+//---------------------------------------------------
+
+function getWhereCondition(req){
+  var query = {{queryWhereCondition}};
+  //following is example of expandable where condition 
+  //for e.g. you have a value for search and it is optional for search
+  /*
+   if (req.query.region !== '0') {
+     query.region = req.query.region;
+   }
+  */
+  return query;
+}
+
+function getSortExpression(req){
+  var sortExpression = {};
+  if(req.query.s){
+    sortExpression[req.query.s] = req.query.so == 'asc' ? 1 : -1;
+  }
+  return sortExpression;
+}
+
+//Routes
+{{camelized-name}}.{{camelized-name}}RESTModel.methods(['post', 'put', 'delete']);
+
+// Customizing get method so that all records are not fetched at one time
+// Use .populate(foreigntablename) to fill foreign table values in query after find 
+{{camelized-name}}.{{camelized-name}}RESTModel.route('get', function (req, res, next) {
+   {{camelized-name}}.{{camelized-name}}.find(getWhereCondition(req))
+                  .skip(req.query.skip)
+                  .limit(req.query.limit)
+                  .sort(getSortExpression(req))
+                  .exec(function (err, {{name}}) {
+                      res.send({{name}});
+                  });
+});
+
+//Custom route example with only get
+{{camelized-name}}.{{camelized-name}}RESTModel.route('count', function (req, res, next) {
+  {{camelized-name}}.{{camelized-name}}RESTModel.count(getWhereCondition(req), function (err, count) {
+    res.send(count.toString());
+  });
+});
+
+//Register {{name}}s api for routing
+{{camelized-name}}.{{camelized-name}}RESTModel.register(router, '/{{name}}s');
+
+//---------------------------------------------------
+//  End of {{camelized-name}}s api
+//---------------------------------------------------
+
+//Return router
+module.exports = router;
+ 

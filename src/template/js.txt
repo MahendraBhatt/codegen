@@ -1,0 +1,83 @@
+{{namespace}}.{{name}} = {
+	count: function(){
+		var search = '?';
+		{{search-query-string}}
+		{{namespace}}.XHR().call({
+			url: "{{name}}s/count/" + search,
+			success: function (res) {
+				$("#noOf{{camelized-name}}s").html(res);
+				if (res > 0) {
+					$("#{{camelized-name}}Header,#{{camelized-name}}Footer,#{{camelized-name}}Container").show();
+					{{namespace}}.grid.sort({ count: res, source: '{{camelized-name}}Header', pager: '.footer', target: '{{camelized-name}}Container', callback: {{namespace}}.{{name}}.load });
+					{{namespace}}.grid.pager({ count: res, element: '.footer', target: '{{camelized-name}}Container', callback: {{namespace}}.{{name}}.load }).build();
+				} else {
+					$('#{{camelized-name}}Container').html('');
+					$("#{{camelized-name}}Header,#{{camelized-name}}Footer,#{{camelized-name}}Container").hide();
+				}
+			}
+		});
+	},
+	load: function(){
+		var target = $('#{{camelized-name}}Container');
+		var search = '?';
+		{{search-query-string}}
+		search += ('&skip={0}&limit={1}').format(target.data('skip'), target.data('limit'));
+	
+		if(target.data('sort-expression')){
+			search += ('&s={0}&so={1}').format(target.data('sort-expression'), target.data('sort-order'));
+		}
+		
+		{{namespace}}.XHR().call({
+			url: "{{name}}s/" + search,
+			success: function (res) {
+				$('#{{camelized-name}}Container').html('');
+				//${( $data.index = $item.dataArrayIndex($item.data) ),''} Index: ${$data.index}
+				$("#{{camelized-name}}GridTemplate").tmpl(res, {
+					dataArrayIndex: function (item) {
+						return $.inArray(item, res) + 1;
+					}
+				}).appendTo("#{{camelized-name}}Container");
+			}
+		});
+	},
+	remove: function(id){
+		var res = confirm('Are you sure?');
+		if (res) {
+			{{namespace}}.XHR().call({
+				url: "{{name}}s/" + id,
+				type: 'DELETE',
+				success: function (res) {
+					console.log('record deleted');
+					{{namespace}}.{{name}}.count();
+				}
+			});
+		}
+	},
+	save: function(id){
+		var data = $('#{{camelized-name}}Input').serializeObject();
+		{{namespace}}.XHR().call({
+			url: "{{name}}s/" + id,
+			data: JSON.stringify(data),
+			type: (id === '' ? 'POST' : 'PUT'),
+			success: function (res) {
+				console.log('record saved');
+				$('#{{camelized-name}}Input .close').click();
+				{{namespace}}.{{name}}.count();
+			}
+		});
+		return false;
+	},
+	showInput: function(row){
+		var data = {};
+		if (row !== undefined) {
+			data = $(row).tmplItem().data;
+		}
+		$("#{{camelized-name}}Input").html('');
+		$("#{{camelized-name}}Template").tmpl(data).appendTo("#{{camelized-name}}Input");
+		{{namespace}}.showModalDialog('{{camelized-name}}Input');
+	}
+};
+
+(function () {
+	{{namespace}}.{{name}}.count();
+})();

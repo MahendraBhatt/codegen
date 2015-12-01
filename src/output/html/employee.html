@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Employees</title>
+	<link rel="stylesheet" href="../css/style.css" type="text/css" />
+</head>
+
+<body>
+	<h2>Employees</h2><span id="noOfEmployees"></span> records found 
+	<div class="search-panel">
+		<div class="row row-separator">
+			<div class="col-12">Find Employees</div>
+		</div>
+		<div class="row">			
+			<div class="col-1 right">EmpNo</div>			<div class="col-1"><input type="text" id="search_EmpNo" /></div>			<div class="col-1 right">FirstName</div>			<div class="col-1"><input type="text" id="search_FirstName" /></div>
+			<div class="col-2">
+				<button onclick="app.employee.count();">Find</button>
+				<button id="addEmployee" onclick="app.employee.showInput();">Add New Employee</button>
+			</div>
+		</div>
+	</div>
+	<section>
+		<div id="EmployeeHeader" class="row header">
+			<div class="col-1"></div>
+			<div class="col-1"><a href="#" data-sort-expression="EmpNo" data-sort-order="none">EmpNo</a></div>			<div class="col-1">FirstName</div>			<div class="col-1">MiddleInitial</div>			<div class="col-1">LastName</div>			<div class="col-1">Dept</div>			<div class="col-1">Phone</div>			<div class="col-1">HireDate</div>			<div class="col-1">Job</div>			<div class="col-1">Sex</div>			<div class="col-1">BirthDate</div>			<div class="col-1">Salary</div>			<div class="col-1">Bonus</div>
+		</div>
+		<div id="EmployeeContainer" class="grid"></div>
+		<div id="EmployeeFooter" class="footer"></div>
+		<form id="EmployeeInput" style="width:500px;"></form>
+	</section>
+
+	<script id="EmployeeTemplate" type="text/x-jQuery-tmpl">
+		<div class="row header">Add Employee<div class="close">X</div></div>
+		<div class="row">			<div class="col-4 right">EmpNo</div>			<div class="col-4 left"><input type="text" id="EmpNo" value="${EmpNo}" /></div>		</div>		<div class="row">			<div class="col-4 right">FirstName</div>			<div class="col-4 left"><input type="text" id="FirstName" value="${FirstName}" /></div>		</div>		<div class="row">			<div class="col-4 right">MiddleInitial</div>			<div class="col-4 left"><input type="text" id="MiddleInitial" value="${MiddleInitial}" /></div>		</div>		<div class="row">			<div class="col-4 right">LastName</div>			<div class="col-4 left"><input type="text" id="LastName" value="${LastName}" /></div>		</div>		<div class="row">			<div class="col-4 right">Dept</div>			<div class="col-4 left"><input type="text" id="Dept" value="${Dept}" /></div>		</div>		<div class="row">			<div class="col-4 right">Phone</div>			<div class="col-4 left"><input type="text" id="Phone" value="${Phone}" /></div>		</div>		<div class="row">			<div class="col-4 right">HireDate</div>			<div class="col-4 left"><input type="date" id="HireDate" value="${HireDate}" /></div>		</div>		<div class="row">			<div class="col-4 right">Job</div>			<div class="col-4 left"><input type="text" id="Job" value="${Job}" /></div>		</div>		<div class="row">			<div class="col-4 right">Sex</div>			<div class="col-4 left"><input type="text" id="Sex" value="${Sex}" /></div>		</div>		<div class="row">			<div class="col-4 right">BirthDate</div>			<div class="col-4 left"><input type="date" id="BirthDate" value="${BirthDate}" /></div>		</div>		<div class="row">			<div class="col-4 right">Salary</div>			<div class="col-4 left"><input type="number" id="Salary" value="${Salary}" /></div>		</div>		<div class="row">			<div class="col-4 right">Bonus</div>			<div class="col-4 left"><input type="number" id="Bonus" value="${Bonus}" /></div>		</div>
+		<div class="row">
+			<div class="col-4 right"></div>
+			<div class="col-4 left"><button onclick="return app.employee.save('${_id}');">Save</button></div>
+		</div>
+	</script>
+	
+	<script id="EmployeeGridTemplate" type="text/x-jQuery-tmpl">
+		<div class="row">
+			<div class="col-1">
+				<div class="edit" onclick="app.employee.showInput(this);"></div>
+				<div class="delete" onclick="app.employee.remove('${_id}');"></div>
+			</div>
+			<div class="col-1">${EmpNo}</div>			<div class="col-1">${FirstName}</div>			<div class="col-1">${MiddleInitial}</div>			<div class="col-1">${LastName}</div>			<div class="col-1">${Dept}</div>			<div class="col-1">${Phone}</div>			<div class="col-1">${HireDate}</div>			<div class="col-1">${Job}</div>			<div class="col-1">${Sex}</div>			<div class="col-1">${BirthDate}</div>			<div class="col-1">${Salary}</div>			<div class="col-1">${Bonus}</div>
+		</div>
+	</script>
+
+	<script src="../js/jquery/dist/jquery.min.js"></script>
+	<script src="../js/jquery.tmpl.min.js"></script>
+	<script src="../js/core.min.js"></script>
+	<script src="../js/xhrlib.min.js"></script>
+	<script src="../js/gridPager.min.js"></script>
+	<script src="../js/page/employee.min.js"></script>
+</body>
+
+</html>
