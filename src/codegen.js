@@ -1,7 +1,14 @@
+//------------------------------------------------------------------------------------------------------------
+//										Dependencies
+//------------------------------------------------------------------------------------------------------------
+
 var fs = require('fs');
 var schema = require('./schema.js');
 var name = schema.name;
 
+//------------------------------------------------------------------------------------------------------------
+//									Generating Mongoose Model
+//------------------------------------------------------------------------------------------------------------
 function getMongooseSchema(columns) {
 	var mongooseSchema = {};
 	columns.forEach(function (element, index, array) {
@@ -10,7 +17,6 @@ function getMongooseSchema(columns) {
 	return JSON.stringify(mongooseSchema, null, '\t');
 }
 
-// Generating Mongoose Model 
 fs.readFile('template/model.txt', 'utf8', function (err, data) {
 	var model = data;
 	var newmodel = model.replace(/{{name}}/g, name.toLowerCase())
@@ -21,6 +27,10 @@ fs.readFile('template/model.txt', 'utf8', function (err, data) {
 		console.log(name + ' Model Created!');
 	});
 });
+
+//------------------------------------------------------------------------------------------------------------
+//								Generating REST API for created Mongoose Model
+//------------------------------------------------------------------------------------------------------------
 	 
 function getQueryWhereCondition(columns) {
 	var queryWhereCondition = '{';
@@ -37,7 +47,6 @@ function getQueryWhereCondition(columns) {
 	return queryWhereCondition;
 }
 
-// Generating REST API for above created Mongoose Model
 fs.readFile('template/api.txt', 'utf8', function (err, data) {
 	var restapi = data;
 	var newrestapi = restapi.replace(/{{name}}/g, name.toLowerCase())
@@ -48,6 +57,10 @@ fs.readFile('template/api.txt', 'utf8', function (err, data) {
 		console.log(name + ' API Created!');
 	});
 });
+
+//------------------------------------------------------------------------------------------------------------
+//								Generating HTML for created Mongoose Model
+//------------------------------------------------------------------------------------------------------------
 
 function getGridColumns(columns) {
 	var gridDisplayColumns = '', gridHeaderColumns = '';
@@ -106,8 +119,7 @@ function getFormControls(columns){
 			});
 	return formControls;
 }
-
-// Generating HTML for above created Mongoose Model
+ 
 fs.readFile('template/html.txt', 'utf8', function (err, data) {
 	var html = data;
 	var gridColumns = getGridColumns(schema.columns);
@@ -124,10 +136,10 @@ fs.readFile('template/html.txt', 'utf8', function (err, data) {
 	});
 });
 
+//------------------------------------------------------------------------------------------------------------
+//								Generating JS for created Mongoose Model
+//------------------------------------------------------------------------------------------------------------
 
-// if ($("#search_name").val() !== '') {
-// 	search += 'name=' + $("#search_name").val();
-// }
 function generateSearchQueryString(columns){
 	var searchQueryString = '';
 	columns.filter(function (obj) {
@@ -141,8 +153,6 @@ function generateSearchQueryString(columns){
 	return searchQueryString;
 }
 
-	
-// Generating JS for above created Mongoose Model
 fs.readFile('template/js.txt', 'utf8', function (err, data) {
 	var js = data;
 	var newjs = js.replace(/{{name}}/g, name.toLowerCase())
@@ -154,3 +164,7 @@ fs.readFile('template/js.txt', 'utf8', function (err, data) {
 		console.log(name + ' JS Created!');
 	});
 });
+
+//------------------------------------------------------------------------------------------------------------
+//								End of Code Generation
+//------------------------------------------------------------------------------------------------------------
