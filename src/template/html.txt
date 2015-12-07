@@ -53,7 +53,7 @@
 	<script src="../js/jquery.tmpl.min.js"></script>
 	<script src="../js/core.min.js"></script>
 	<script src="../js/xhrlib.min.js"></script>
-	<script src="../js/gridPager.min.js"></script>
+	<script src="../js/grid.min.js"></script>
 	<script src="../js/page/{{name}}.min.js"></script>
 </body>
 
