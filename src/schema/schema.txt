@@ -1,0 +1,34 @@
+Name	Client										
+PageTitle	Manage Clients										
+PageSubTitle	Manage client information										
+PageBreadcrumb	Home / Manage Clients										
+PageFlowTabs	N										
+PageSwitchTabName	Add / Edit Clients										
+FormColumnCount	2										
+StandardHeader	Y										
+StandardFooter	Y										
+DEV_CollectionName	Clients										
+											
+RowNo	ColNo	FieldColSpan	TypeOfField	FieldTitle	MandatoryYN	EditableYN	FieldWatermarkText	FieldValues	DEV_ServiceName	DEV_TableFieldName	Remarks
+1	1	2	Section Header	Client Information		N					# Header should be capitalized - will be handled with CSS
+2	2	2	Section Sub Header	Provide information for the client		N					# Ignore column in Header / Sub Header fields. They should all be in the 1st col by default
+3	1	1	Text Field	Client Name	Y	Y	Client name				
+3	2	1	Text Field	Client Group		Y	Parent client to associate client with				# Error - column number is 3 - solved
+22	1	1	Text Field	Meytier Account Manager Name	Y	Y	Meytier account manager managing this client				
+22	2	1	Date	Client Contact Name	Y	Y	Name of client contact				# Error - Both items in row marked as Col 1 - solved
+23	1	1	Phone Number	Client Contact Number	Y	Y	Main client contact's phone number				
+23	2	1	Email	Client Contact Email	Y	Y	Main client contact's email ID				
+4	1	1	Text Field	Client Website	Y	Y	Client website e.g. www.mywebsite.com				# Out of order row#. Should still be ordered correctly in the UI - solved
+4	2	1	Text Field	Email Domain	Y	Y	Domain name found in email - e.g. mywebsite.com				
+20	1	2	Section Header	Client Contact Information		N					
+21	1	2	Section Sub Header	Enter contact information for the primary client contact		N					
+5	1	2	Multi Select	Client Industry	Y	Y	Select from a list of industries the client works in				
+6	1	1	Text Field	About the client		Y	Additional information about the client, if any				
+6	2	1	Browse And Upload	Client Logo	Y	Y	Select image file with client logo and upload				
+7	1	2	Multi Select	Client Hiring Locations	N	Y	Select locations in which the client hires (generally, client office locations)				
+30	1	2	Section Header	Client Status & Diversity Goals		N					# Error - Section header marked as Editable - solved
+31	1	2	Section Sub Header	Set client status and manage their diversity goals		N					
+32	1	1	Single Select	Client Status	Y	Y	Set client status	Active ~ Inactive			"# Error - This row has 2 columns, but one of the colums has FieldColSpan = 2"" – solved"
+32	2	1	Button	Manage Sourcing Diversity Goals		N	Set sourcing diversity goals for client				
+40	1	2	Grid			N		Client Id~|meytierId~clientName~accountManager~status			# Grid column headers
+100	2	2	Final Buttons	Verify and Proceed		N		Verify and Proceed ~ Clear			# Error - Button cannot be editable - solved

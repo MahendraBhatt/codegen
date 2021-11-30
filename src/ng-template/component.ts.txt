@@ -1,0 +1,35 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ClientService } from '../client.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { MyErrorStateMatcher } from '../error-state-matcher';
+import { Title } from '@angular/platform-browser';
+import { MessageBoxService } from '../message-box.service';
+
+@Component({
+  selector: '{{name}}-component',
+  templateUrl: './{{name}}.component.html',
+  styleUrls: ['./{{name}}.component.css']
+})
+export class {{camelized-name}}Component implements OnInit {
+
+  {{form-controls}}
+
+  matcher = new MyErrorStateMatcher();
+
+  constructor(private route: ActivatedRoute, 
+              private client: ClientService, 
+              private messageService:MessageBoxService, 
+              private router: Router, 
+              private title: Title) { }
+
+  meytierId: any;
+
+  ngOnInit() {
+    this.title.setTitle("{{PageTitle}}")
+    this.route.params.subscribe((params) => {
+      //this.meytierId = atob(atob(params.id));
+    });
+  }
+
+}

@@ -1,0 +1,31 @@
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ClientService } from '../client.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: '{{name}}-list-component',
+  templateUrl: './{{name}}-list.component.html',
+  styleUrls: ['./{{name}}-list.component.css']
+})
+export class {{camelized-name}}ListComponent implements OnInit {
+
+  constructor(private client: ClientService, private router: Router) { }
+
+  {{camelized-name}}s: any = [];
+
+  ngOnInit() {
+    this.client.getAll{{camelized-name}}s().then((data: any) => {
+      if(data){
+        this.{{camelized-name}}s = data.data;
+      }
+    })
+  }
+
+  addEdit(mode){
+    if(mode == 'add'){
+      this.router.navigate(['{{name}}/new']);
+    } else {
+      this.router.navigate(['{{name}}/' + btoa(btoa(mode))]);
+    }
+  }
+}

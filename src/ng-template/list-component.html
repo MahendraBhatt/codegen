@@ -1,0 +1,23 @@
+<div class="list-container">
+  <div class="list-header">
+    <div>{{PageTitle}}</div>
+  </div>
+  <div class="list-content">
+    <div class="container header-row">
+      <div class="sub-container">
+        {{grid-header-columns}}
+      </div>
+    </div>
+    <div *ngFor="let {{name}} of {{camelized-name}}s; let i = index"
+      [class]="i % 2 == 0? 'container row' : 'container alternating-row'" (click)="addEdit({{primary-key}})">
+      <div class="sub-container">
+        {{grid-columns}}
+      </div>
+    </div>
+  </div>
+  <div class="btn-footer">
+    <div class="btn-container">
+      <input type="button" [value]="'Add new {{camelized-name}}(s)'" class="buttonReachOutUs submit-cancel" (click)="addEdit('add')">
+    </div>
+  </div>
+</div>

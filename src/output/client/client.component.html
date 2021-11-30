@@ -1,0 +1,200 @@
+<form class="form">
+  <div class="container">
+    <div class="page-title">Manage Clients</div>
+    <div class="page-switch-tab-name">
+      <div>Add / Edit Clients</div>
+    </div>
+    <div flex fxLayout="row">
+      <div fxFlex="10"></div>
+      <div fxFlex="80">
+          	<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+				<div class="section-header">Client Information</div>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+				<div class="section-sub-header">Provide information for the client</div>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Name</mat-label>
+		<input type="text" matInput [formControl]="ClientNameFormControl" [errorStateMatcher]="matcher" placeholder="Client name" required>
+		<mat-hint>Client name</mat-hint>
+		<mat-error *ngIf="ClientNameFormControl.hasError('required')">
+			Client Name is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Group</mat-label>
+		<input type="text" matInput [formControl]="ClientGroupFormControl" [errorStateMatcher]="matcher" placeholder="Parent client to associate client with" >
+		<mat-hint>Parent client to associate client with</mat-hint>
+	</mat-form-field>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Website</mat-label>
+		<input type="text" matInput [formControl]="ClientWebsiteFormControl" [errorStateMatcher]="matcher" placeholder="Client website e.g. www.mywebsite.com" required>
+		<mat-hint>Client website e.g. www.mywebsite.com</mat-hint>
+		<mat-error *ngIf="ClientWebsiteFormControl.hasError('required')">
+			Client Website is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Email Domain</mat-label>
+		<input type="text" matInput [formControl]="EmailDomainFormControl" [errorStateMatcher]="matcher" placeholder="Domain name found in email - e.g. mywebsite.com" required>
+		<mat-hint>Domain name found in email - e.g. mywebsite.com</mat-hint>
+		<mat-error *ngIf="EmailDomainFormControl.hasError('required')">
+			Email Domain is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Industry</mat-label>
+		<input type="text" matInput [formControl]="ClientIndustryFormControl" [errorStateMatcher]="matcher" placeholder="Select from a list of industries the client works in" required>
+		<mat-hint>Select from a list of industries the client works in</mat-hint>
+		<mat-error *ngIf="ClientIndustryFormControl.hasError('required')">
+			Client Industry is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>About the client</mat-label>
+		<input type="text" matInput [formControl]="AbouttheclientFormControl" [errorStateMatcher]="matcher" placeholder="Additional information about the client, if any" >
+		<mat-hint>Additional information about the client, if any</mat-hint>
+	</mat-form-field>
+			</div>
+			<div fxFlex="50">
+<span class="file-upload">Client Logo</span><br/><input type="file" [formControl]="ClientLogoFormControl" placeholder="Select image file with client logo and upload" />			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Hiring Locations</mat-label>
+		<input type="text" matInput [formControl]="ClientHiringLocationsFormControl" [errorStateMatcher]="matcher" placeholder="Select locations in which the client hires (generally, client office locations)" >
+		<mat-hint>Select locations in which the client hires (generally, client office locations)</mat-hint>
+	</mat-form-field>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+<mat-divider></mat-divider>				<div class="section-header">Client Contact Information</div>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+				<div class="section-sub-header">Enter contact information for the primary client contact</div>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Meytier Account Manager Name</mat-label>
+		<input type="text" matInput [formControl]="MeytierAccountManagerNameFormControl" [errorStateMatcher]="matcher" placeholder="Meytier account manager managing this client" required>
+		<mat-hint>Meytier account manager managing this client</mat-hint>
+		<mat-error *ngIf="MeytierAccountManagerNameFormControl.hasError('required')">
+			Meytier Account Manager Name is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Contact Name</mat-label>
+		<input [matDatepicker]="pickerClientContactNameFormControl"  matInput [formControl]="ClientContactNameFormControl" [errorStateMatcher]="matcher" placeholder="Name of client contact" required>
+<mat-datepicker-toggle matSuffix [for]="pickerClientContactNameFormControl"></mat-datepicker-toggle>
+<mat-datepicker #pickerClientContactNameFormControl></mat-datepicker>
+		<mat-hint>Name of client contact</mat-hint>
+		<mat-error *ngIf="ClientContactNameFormControl.hasError('required')">
+			Client Contact Name is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Contact Number</mat-label>
+		<input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" matInput [formControl]="ClientContactNumberFormControl" [errorStateMatcher]="matcher" placeholder="Main client contact's phone number" required>
+		<mat-error *ngIf="ClientContactNumberFormControl.hasError('pattern') && !ClientContactNumberFormControl.hasError('required')">
+			Please enter a valid phone number
+		</mat-error>
+		<mat-hint>Main client contact's phone number</mat-hint>
+		<mat-error *ngIf="ClientContactNumberFormControl.hasError('required')">
+			Client Contact Number is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Contact Email</mat-label>
+		<input type="email" matInput [formControl]="ClientContactEmailFormControl" [errorStateMatcher]="matcher" placeholder="Main client contact's email ID" required>
+		<mat-error *ngIf="ClientContactEmailFormControl.hasError('email') && !ClientContactEmailFormControl.hasError('required')">
+			Please enter a valid email address
+		</mat-error>
+		<mat-hint>Main client contact's email ID</mat-hint>
+		<mat-error *ngIf="ClientContactEmailFormControl.hasError('required')">
+			Client Contact Email is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+<mat-divider></mat-divider>				<div class="section-header">Client Status & Diversity Goals</div>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+				<div class="section-sub-header">Set client status and manage their diversity goals</div>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="50">
+	<mat-form-field appearance="fill">
+		<mat-label>Client Status</mat-label>
+		<mat-select  matInput [formControl]="ClientStatusFormControl" [errorStateMatcher]="matcher" placeholder="Set client status" required>
+<mat-option>--</mat-option>
+<mat-option [value]="Active">Active</mat-option>
+<mat-option [value]="Inactive">Inactive</mat-option>
+</mat-select>
+		<mat-hint>Set client status</mat-hint>
+		<mat-error *ngIf="ClientStatusFormControl.hasError('required')">
+			Client Status is <strong>required</strong>
+		</mat-error>
+	</mat-form-field>
+			</div>
+			<div fxFlex="100">
+<button mat-raised-button color="primary">Manage Sourcing Diversity Goals</button>
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+			</div>
+</div>
+<div flex fxLayout="row" class="row">
+			<div fxFlex="100">
+<button mat-raised-button color="primary">Verify and Proceed </button>&nbsp;&nbsp;
+<button mat-raised-button color="primary"> Clear</button>&nbsp;&nbsp;
+					</div>
+</div>
+
+      </div>
+      <div fxFlex="10"></div>
+    </div>
+    <div style="height: 100px;"></div>
+  </div>
+</form>

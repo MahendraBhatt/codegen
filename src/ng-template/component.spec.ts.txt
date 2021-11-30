@@ -1,0 +1,24 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { {{camelized-name}}Component } from './{{name}}.component';
+
+describe('{{camelized-name}}Component', () => {
+  let component: {{camelized-name}}Component;
+  let fixture: ComponentFixture<{{camelized-name}}Component>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ {{camelized-name}}Component ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent({{camelized-name}}Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

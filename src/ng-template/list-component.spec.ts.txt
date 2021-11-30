@@ -1,0 +1,24 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { {{camelized-name}}ListComponent } from './{{name}}-list.component';
+
+describe('{{camelized-name}}ListComponent', () => {
+  let component: {{camelized-name}}ListComponent;
+  let fixture: ComponentFixture<{{camelized-name}}ListComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ {{camelized-name}}ListComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent({{camelized-name}}ListComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
